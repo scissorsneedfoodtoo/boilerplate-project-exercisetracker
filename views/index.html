@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+   <head>
+      <title>Exercise Tracker</title>
+      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+      <link href="../public/style.css" rel="stylesheet" type="text/css">
+   </head>
+
+   <body>
+      <div class="container">
+         <h2>APIs and Microservices 4: Exercise Tracker</h2>
+         <ol>
+            <li>
+               I can create a user by sending a <code>POST</code> request with a username to <code>[project_url]/api/shorturl/new</code> and receive an object with <code>username</code> and <code>userID</code> as a response. Example: <code>{ "username": "testUser", "userId": "NeElC0NT" }</code>
+            </li>
+            <li>
+               If a user with the same username already exists, return the status code 400 and the message "Username already taken".
+            </li>
+            <li>
+               I can get an array of all users by sending a <code>GET</code> request to <code>api/exercise/users</code>. Example: <code>{ ["username": "testUser", "userId": "NeElC0NT", "username": "anotherTestUser", "userId": "mSiizWbVz"] }</code>
+            </li>
+            <li>
+               I can add an exercise for any user by sending a <code>POST</code> request with <code>userId(_id)</code>, <code>description</code>, <code>duration</code>, and optionally <code>date</code> (yyyy-mm-dd) as parameters to <code>/api/exercise/add</code>. If no <code>date</code> supplied it will use current date. Returned will be the user object with the exercise fields added. Example: <code>{ "userId": "NeElC0NT", "description": "Walk", "duration": 40, "date": "Thu Dec 26 2019", "username": "testUser" }</code>
+            </li>
+            <li>
+               I can retrieve the full exercise log of any user by sending a <code>GET</code> request to <code>/api/exercise/log</code> with the parameter <code>userId(_id)</code>. Returned will be the user object with <code>log</code>, an array of all exercises, and <code>count</code>, the total exercise count. Example: <code>{ "userId": "NeElC0NT", "username": "testUser", "count": 2, "log": [ { "description": "Walk", "duration": 40, date: "Thu Dec 26 2019" }, { "description": "Run", "duration": 30, date: "Wed Dec 25 2019" } ] }</code>
+            </li>
+            <li>
+               I can retrieve part of the log for any user by also passing along the optional parameters <code>from</code> and <code>to</code> or <code>limit</code>. The <code>from</code> and <code>to</code> dates should be in the yyyy-mm-dd format, and <code>limit</code> should be an integer.
+            </li>
+          </ol>
+          <form action="/api/exercise/new-user" method="post">
+            <h3>Create a New User</h3>
+            <p><code>POST /api/exercise/new-user</code></p>
+            <input id="uname" type="text" name="username" placeholder="username">
+            <input type="submit" value="Submit">
+          </form>
+          <form action="/api/exercise/add" method="post">
+            <h3>Add exercises</h3>
+            <p><code>POST /api/exercise/add</code></p>
+            <input id="uid" type="text" name="userId" placeholder='userId*'>
+            <input id="desc" type="text" name="description" placeholder="description*">
+            <input id="dur" type="text" name="duration" placeholder="duration* (mins.)">
+            <input id="dur" type="text" name="date" placeholder="date (yyyy-mm-dd)">
+            <input type="submit" value="Submit">
+          </form>
+          <p><strong>GET users's exercise log: </strong><code>GET /api/exercise/log?{userId}[&amp;from][&amp;to][&amp;limit]</code></p>
+          <p><strong>{ }</strong> = required, <strong>[ ]</strong> = optional</p>
+          <p><strong>from, to</strong> = dates (yyyy-mm-dd); <strong>limit</strong> = number</p>
+      </div>
+   </body>
+
+</html>

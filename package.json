@@ -1,0 +1,23 @@
+{
+ "name": "exercise-tracker",
+ "version": "1.0.0",
+ "description": "APIs and Microservices 4: Exercise Tracker",
+ "main": "server.js",
+ "scripts": {
+  "start": "nodemon server.js",
+  "test": "mocha --exit --ui tdd tests/"
+ },
+ "dependencies": {
+  "body-parser": "^1.19.0",
+  "chai": "^4.2.0",
+  "chai-http": "^4.3.0",
+  "dotenv": "^8.2.0",
+  "express": "^4.17.1",
+  "mocha": "^6.2.2",
+  "mongodb": "^3.4.1",
+  "mongoose": "^5.8.2",
+  "nodemon": "^2.0.2",
+  "shortid": "^2.2.15"
+ },
+ "license": "MIT"
+}
